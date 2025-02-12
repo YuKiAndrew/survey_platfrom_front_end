@@ -12,10 +12,10 @@
                 </div>
               </el-col>
               <el-col :span="4">
-                <el-select :value="survey.surveyState" v-model="survey.surveyState" placeholder="请选择" @change="surveyStateChange" >
-                  <el-option key="0" :value="0" label="设计中" ></el-option>
-                  <el-option key="1" :value="1" label="发布收集" ></el-option>
-                  <el-option key="2" :value="2" label="收集结束" ></el-option>
+                <el-select :value="survey.surveyState" v-model="survey.surveyState" placeholder="Please choose one of options" @change="surveyStateChange" >
+                  <el-option key="0" :value="0" label="Design" ></el-option>
+                  <el-option key="1" :value="1" label="Publish" ></el-option>
+                  <el-option key="2" :value="2" label="End of Collection" ></el-option>
                 </el-select>
               </el-col>
             </el-row>
@@ -41,24 +41,24 @@
             <div class="dw-dcs-main-survey-step-item" style="padding-left: 16px;">
               <el-row v-show="isAnswerUrl || isSurveySet || isSiteShare || isSiteComp || isAnswerWx">
                 <el-col :span="3">
-                  <router-link :to="`${prevPath}/survey/c/url/${survey.id}`" :class="{ 'dw-link-primary' : isAnswerUrl}" class="dw-link" ><i class="el-icon-link"></i>答卷地址</router-link>
+                  <router-link :to="`${prevPath}/survey/c/url/${survey.id}`" :class="{ 'dw-link-primary' : isAnswerUrl}" class="dw-link" ><i class="el-icon-link"></i>Answer Url</router-link>
                 </el-col>
                 <el-col :span="3">
-                  <router-link :to="`${prevPath}/survey/c/attr/${survey.id}`" :class="{ 'dw-link-primary' : isSurveySet}" class="dw-link" ><i class="el-icon-setting"></i>答卷设置</router-link>
+                  <router-link :to="`${prevPath}/survey/c/attr/${survey.id}`" :class="{ 'dw-link-primary' : isSurveySet}" class="dw-link" ><i class="el-icon-setting"></i>Answer Design</router-link>
                 </el-col>
                 <el-col :span="3">
-                  <router-link :to="`${prevPath}/survey/c/comp/${survey.id}`" :class="{ 'dw-link-primary' : isSiteComp}" class="dw-link" ><i class="el-icon-discount"></i>网站组件</router-link>
+                  <router-link :to="`${prevPath}/survey/c/comp/${survey.id}`" :class="{ 'dw-link-primary' : isSiteComp}" class="dw-link" ><i class="el-icon-discount"></i>Website components</router-link>
                 </el-col>
                 <el-col :span="3">
-                  <router-link :to="`${prevPath}/survey/c/weixin/${survey.id}`" :class="{ 'dw-link-primary' : isAnswerWx}" class="dw-link" ><i class="el-icon-chat-dot-round"></i>微信收集</router-link>
+                  <router-link :to="`${prevPath}/survey/c/weixin/${survey.id}`" :class="{ 'dw-link-primary' : isAnswerWx}" class="dw-link" ><i class="el-icon-chat-dot-round"></i>Collection</router-link>
                 </el-col>
               </el-row>
               <el-row v-show="isSurveyChart || isAnswerData">
                 <el-col :span="3">
-                  <router-link :to="`${prevPath}/survey/d/chart/${survey.id}`" :class="{ 'dw-link-primary' : isSurveyChart}" class="dw-link" ><i class="el-icon-discount"></i>默认统计</router-link>
+                  <router-link :to="`${prevPath}/survey/d/chart/${survey.id}`" :class="{ 'dw-link-primary' : isSurveyChart}" class="dw-link" ><i class="el-icon-discount"></i>Statistics</router-link>
                 </el-col>
                 <el-col :span="3">
-                  <router-link :to="`${prevPath}/survey/d/data/${survey.id}`" :class="{ 'dw-link-primary' : isAnswerData}" class="dw-link" ><i class="el-icon-receiving"></i>原始数据</router-link>
+                  <router-link :to="`${prevPath}/survey/d/data/${survey.id}`" :class="{ 'dw-link-primary' : isAnswerData}" class="dw-link" ><i class="el-icon-receiving"></i>Raw Data</router-link>
                 </el-col>
                 <el-col :span="3"></el-col>
                 <el-col :span="3"></el-col>
@@ -67,18 +67,18 @@
             <div class="dw-dcs-main-survey-step-item dw-dcs-main-survey-step-item-status" >
               <el-row type="flex" justify="space-between" align="middle">
                 <el-col :span="4">
-                  <div>状态：
-                    <el-tag v-if="survey.surveyState === 0" size="mini" >设计中</el-tag>
-                    <el-tag v-else-if="survey.surveyState === 1" type="success" size="mini" >收集中</el-tag>
-                    <el-tag v-else-if="survey.surveyState === 2" type="info" size="mini" >收集结束</el-tag>
-                    <el-tag v-else disable-transitions style="margin-left: 10px" size="mini" >未知</el-tag>
+                  <div>Process：
+                    <el-tag v-if="survey.surveyState === 0" size="mini" >Design Phase</el-tag>
+                    <el-tag v-else-if="survey.surveyState === 1" type="success" size="mini" >Collect Phase</el-tag>
+                    <el-tag v-else-if="survey.surveyState === 2" type="info" size="mini" >Complete</el-tag>
+                    <el-tag v-else disable-transitions style="margin-left: 10px" size="mini" >Other Phase</el-tag>
                   </div>
                 </el-col>
                 <el-col :span="4">
-                  <div>collect ammount：{{ survey.answerNum != null ? survey.answerNum : 0 }} 份</div>
+                  <div>collect ammount：{{ survey.answerNum != null ? survey.answerNum : 0 }}</div>
                 </el-col>
                 <el-col :span="16" style="text-align: right;">
-                  创建时间：{{ survey.createDate }}
+                  Create Date：{{ survey.createDate }}
                 </el-col>
               </el-row>
             </div>
@@ -138,9 +138,9 @@ export default {
       dwSurveyUpState(this.$route.params.id, this.survey.surveyState).then((response) => {
         const httpResult = response.data
         if (httpResult.resultCode === 200) {
-          this.$message.success('问卷状态设置成功')
+          this.$message.success('Survey Status has been successfully set!')
         } else {
-          this.$message.error('问卷状态设置失败')
+          this.$message.error('Fail to set survey state!')
         }
       })
     },
@@ -151,7 +151,7 @@ export default {
         this.survey.answerUrl = location.origin + '/#/diaowen/' + this.survey.sid
         this.survey.answerUrl1 = location.origin + '/static/diaowen/answer-p.html?sid=' + this.survey.sid
         this.survey.answerUrlQR = process.env.DW_API_URL+'/api/dwsurvey/anon/response/answerTD.do?surveyId=' + this.survey.id
-        this.survey.siteCompCodeRoot = '<div id="dwsurveyWebAnswerCompCode"><div id="dwsurveyWebSiteFixed" style="position: fixed; right: 0px; left: auto; top: 520px; z-index: 99999;"><a target=\'_blank\' id="dwsurveyWebSiteFixedA" href="' + this.survey.answerUrl + '" style="background-color: rgb(24, 144, 255); width: 15px; display: block; padding: 10px 6px 10px 10px; color: white; cursor: pointer; float: right; vertical-align: middle; text-decoration: none; font-size: 12px; box-sizing: content-box; line-height: 20px;">问卷调查</a></div></div>'
+        this.survey.siteCompCodeRoot = '<div id="dwsurveyWebAnswerCompCode"><div id="dwsurveyWebSiteFixed" style="position: fixed; right: 0px; left: auto; top: 520px; z-index: 99999;"><a target=\'_blank\' id="dwsurveyWebSiteFixedA" href="' + this.survey.answerUrl + '" style="background-color: rgb(24, 144, 255); width: 15px; display: block; padding: 10px 6px 10px 10px; color: white; cursor: pointer; float: right; vertical-align: middle; text-decoration: none; font-size: 12px; box-sizing: content-box; line-height: 20px;">Survey Investigation</a></div></div>'
         this.survey.surveyDetail.effective = resultData.surveyDetail.effective === 1
         this.survey.surveyDetail.effectiveIp = resultData.surveyDetail.effectiveIp === 1
         this.survey.surveyDetail.refresh = resultData.surveyDetail.refresh === 1

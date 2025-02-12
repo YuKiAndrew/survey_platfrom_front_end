@@ -15,12 +15,12 @@
                 </a>
               </el-col>
               <el-col :span="16">
-                <div style="padding-left: 60px;color: white;">DWSurvey OSS 社区版 - Vue</div>
+                <div style="padding-left: 60px;color: white;">Survey Service</div>
               </el-col>
               <el-col :span="4" style="text-align: right;" >
                 <div>
                   <div style="height: 80px;line-height: 80px;">
-                    <el-button type="primary">登录</el-button>
+                    <el-button type="primary">Login in</el-button>
                   </div>
                 </div>
               </el-col>

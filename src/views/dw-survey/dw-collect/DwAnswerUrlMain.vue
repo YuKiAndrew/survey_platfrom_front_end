@@ -2,48 +2,48 @@
   <div>
     <div>
       <div class="dw-dcs-main-title">
-        <h4>答卷地址</h4>
-        <div class="dw-dcs-main-p">复制下面的问卷链接到QQ，Email等工具中直接发给被用户</div>
+        <h4>Answer Url</h4>
+        <div class="dw-dcs-main-p">Duplicate the short url to customers</div>
       </div>
       <div class="dw-dcs-main-content">
         <div class="dw-dcs-main-title">
-          <div class="dw-dcs-main-p">简短地址：此地址只支持现代浏览器</div>
+          <div class="dw-dcs-main-p">Short Url</div>
         </div>
         <el-input id="copyCodeInput" v-model="survey.answerUrl" readonly style="width: 500px;" ></el-input>
         <el-button-group>
-          <el-button type="primary" icon="el-icon-copy-document" @click="copyActiveCode($event,survey.answerUrl )" >复制地址</el-button>
-          <el-link :href="survey.answerUrl" :underline="false" target="_blank" ><el-button icon="el-icon-link" style="border-bottom-left-radius: 0px;border-top-left-radius: 0px;" >打开问卷</el-button></el-link>
+          <el-button type="primary" icon="el-icon-copy-document" @click="copyActiveCode($event,survey.answerUrl )" >Duplicate Address</el-button>
+          <el-link :href="survey.answerUrl" :underline="false" target="_blank" ><el-button icon="el-icon-link" style="border-bottom-left-radius: 0px;border-top-left-radius: 0px;" >Open Questionnaire</el-button></el-link>
         </el-button-group>
       </div>
       <div class="dw-dcs-main-content">
         <div class="dw-dcs-main-title">
           <div class="dw-dcs-main-p">
-            兼容地址：此地址支持所有浏览器中使用，如IE等。
+            This address supports use in all browsers, such as IE, etc
           </div>
         </div>
         <el-input id="copyCodeInput" v-model="survey.answerUrl1" readonly style="width: 500px;" ></el-input>
         <el-button-group>
-          <el-button type="primary" icon="el-icon-copy-document" @click="copyActiveCode($event,survey.answerUrl1 )" >复制地址</el-button>
-          <el-link :href="survey.answerUrl1" :underline="false" target="_blank" ><el-button icon="el-icon-link" style="border-bottom-left-radius: 0px;border-top-left-radius: 0px;" >打开问卷</el-button></el-link>
+          <el-button type="primary" icon="el-icon-copy-document" @click="copyActiveCode($event,survey.answerUrl1 )" >Duplicate Address</el-button>
+          <el-link :href="survey.answerUrl1" :underline="false" target="_blank" ><el-button icon="el-icon-link" style="border-bottom-left-radius: 0px;border-top-left-radius: 0px;" >Open questionnaire</el-button></el-link>
         </el-button-group>
       </div>
     </div>
     <div>
       <div class="dw-dcs-main-title">
-        <h4>二维码地址</h4>
-        <div class="dw-dcs-main-p">通过手机扫一扫，或下载二维码，即可进行问卷数据收集。</div>
+        <h4>QR Code</h4>
+        <div class="dw-dcs-main-p">Scan the QR code to complete questionnaire</div>
       </div>
       <div class="dw-dcs-main-content">
         <el-row type="flex" justify="start" align="middle">
           <el-col :span="4">
             <el-image :src="survey.answerUrlQR" class="dw-dcs-main-img">
               <div slot="placeholder" class="image-slot">
-                加载中<span class="dot">...</span>
+                loading<span class="dot">...</span>
               </div>
             </el-image>
           </el-col>
           <el-col :span="20">
-            <el-button type="primary" icon="el-icon-download" style="margin-left: 10px;" @click="downloadAnswerImg(`${survey.answerUrlQR}&down=1`)" >下载二维码</el-button>
+            <el-button type="primary" icon="el-icon-download" style="margin-left: 10px;" @click="downloadAnswerImg(`${survey.answerUrlQR}&down=1`)" >Scan QR Code</el-button>
           </el-col>
         </el-row>
       </div>
@@ -76,7 +76,7 @@ export default {
       console.debug(this.survey)
       const clipboard = new Clipboard(e.target, {text: () => text})
       clipboard.on('success', e => {
-        this.$message({type: 'success', message: '复制成功'})
+        this.$message({type: 'success', message: 'Successful Duplicate'})
         // 释放内存
         clipboard.off('error')
         clipboard.off('success')
@@ -84,7 +84,7 @@ export default {
       })
       clipboard.on('error', e => {
         // 不支持复制
-        this.$message({type: 'warning', message: '该浏览器不支持自动复制'})
+        this.$message({type: 'warning', message: 'The browser does not support the clipboard'})
         // 释放内存
         clipboard.off('error')
         clipboard.off('success')

@@ -21,9 +21,9 @@
                       {{ userName }} <i class="el-icon-arrow-down el-icon--right"></i>
                     </span>
                     <el-dropdown-menu slot="dropdown">
-                      <el-dropdown-item command="myAccount">我的账号</el-dropdown-item>
-                      <el-dropdown-item command="updatePwd">修改密码</el-dropdown-item>
-                      <el-dropdown-item command="logout">退出登录</el-dropdown-item>
+                      <el-dropdown-item command="myAccount">My Account</el-dropdown-item>
+                      <el-dropdown-item command="updatePwd">Change Password</el-dropdown-item>
+                      <el-dropdown-item command="logout">Login Out</el-dropdown-item>
                     </el-dropdown-menu>
                   </el-dropdown>
                 </div>
