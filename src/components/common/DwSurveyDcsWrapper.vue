@@ -75,7 +75,7 @@
                   </div>
                 </el-col>
                 <el-col :span="4">
-                  <div>收集数：{{ survey.answerNum != null ? survey.answerNum : 0 }} 份</div>
+                  <div>collect ammount：{{ survey.answerNum != null ? survey.answerNum : 0 }} 份</div>
                 </el-col>
                 <el-col :span="16" style="text-align: right;">
                   创建时间：{{ survey.createDate }}
