@@ -1,13 +1,12 @@
 {
-  "name": "dwsurvey-oss-front-vue",
+  "name": "survey_platform",
   "version": "1.0.0",
-  "description": "dwsurvey open source survey system",
-  "author": "wkeyuan <keyuan258@gmail.com>",
+  "description": "survey platform project",
+  "author": "yuanmx(mingxuan883@gmail.com)",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "predeploy": "npm rum build",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
