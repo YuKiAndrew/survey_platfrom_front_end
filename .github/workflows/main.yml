@@ -1,30 +1,40 @@
-name: CI
+# 该workflow的名称，可以随意填写
+name: Build And Deploy To Github Pages
+
+# workflow的触发事件，这里代表main分支的push事件触发
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
+# 任务
 jobs:
+  # build-and-deploy 为任务的ID
   build-and-deploy:
-    # 服务器环境：最新版 Ubuntu
+    # 运行所需要的环境
     runs-on: ubuntu-latest
+
     steps:
-      # 拉取代码
+      # 步骤名
       - name: Checkout
-        uses: actions/checkout@v2
+        # 使用的actions脚本，这里是官方提供的获取源码脚本
+        uses: actions/checkout@v2.3.1
+        # 这个为使用 JamesIves/github-pages-deploy-action脚本所需要的配置
         with:
           persist-credentials: false
-      # 生成静态文件
-      - name: Build
+
+      # 执行npm脚本打包项目
+      - name: Install and Build
         run: |
           npm install
-          CI=false npm run dev
+          npm run build
 
-      # 部署到 GitHub Pages
+      # 执行JamesIves/github-pages-deploy-action将项目发布到Github Pages
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
-          access_token: ${{ secrets.ACCESS_TOKEN }} # 也就是我们刚才生成的 secret
-          branch: gh-pages # 部署到 gh-pages 分支，因为 main 分支存放的一般是源码，而 gh-pages 分支则用来存放生成的静态文件
-          folder: dist # 生成的静态文件存放的地方
-
+          # 该workflow需要操作repo，因此需要一个密钥，下面会讲到如何获取这个密钥
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          # 发布到的分支
+          BRANCH: gh-pages
+          # 要发布的文件夹
+          FOLDER: dist
