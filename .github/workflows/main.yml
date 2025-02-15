@@ -19,7 +19,6 @@ jobs:
         run: |
           npm install
           npm run dev
-          npm run deploy
 
       # 部署到 GitHub Pages
       - name: Deploy
