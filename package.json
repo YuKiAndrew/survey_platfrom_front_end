@@ -5,7 +5,7 @@
   "author": "yuanmx(mingxuan883@gmail.com)",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --progress --config build/webpack.dev.conf.js"
+    "dev": "webpack --progress --config build/webpack.dev.conf.js"
   },
   "dependencies": {
     "axios": "^0.24.0",
