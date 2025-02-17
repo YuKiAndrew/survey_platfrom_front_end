@@ -84,20 +84,20 @@ export default {
         desc: ''
       },
       options: [{
-        value: '选项1',
-        label: '黄金糕'
+        value: 'Option1',
+        label: 'Rice'
       }, {
-        value: '选项2',
-        label: '双皮奶'
+        value: 'Option2',
+        label: 'Noodles'
       }, {
-        value: '选项3',
-        label: '蚵仔煎'
+        value: 'Option3',
+        label: 'Pancakes'
       }, {
-        value: '选项4',
-        label: '龙须面'
+        value: 'Option4',
+        label: 'Pho'
       }, {
-        value: '选项5',
-        label: '北京烤鸭'
+        value: 'Option5',
+        label: 'Dumplings'
       }],
       value: '',
       dwResourceUrl: ''

@@ -1,5 +1,5 @@
 <template>
-  <div>问卷加载中</div>
+  <div>Survey loadding...</div>
 </template>
 
 <script>

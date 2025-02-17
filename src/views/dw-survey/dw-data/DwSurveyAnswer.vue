@@ -4,8 +4,8 @@
       <template v-slot:dw-dcs-main-slot="{survey}" >
         <div class="dw-dcs-main-title">
           <el-row type="flex">
-            <el-col :span="18"><div style="font-size: 14px;padding: 10px;"><strong>原始数据列表</strong></div></el-col>
-            <el-col :span="6" style="text-align: right;padding-right: 16px;" ><el-button type="primary" size="small" @click="handleExport" >导出数据</el-button></el-col>
+            <el-col :span="18"><div style="font-size: 14px;padding: 10px;"><strong>Raw Data</strong></div></el-col>
+            <el-col :span="6" style="text-align: right;padding-right: 16px;" ><el-button type="primary" size="small" @click="handleExport" >Export</el-button></el-col>
           </el-row>
         </div>
         <el-table
@@ -13,7 +13,7 @@
           stripe
           style="width: 100%">
           <el-table-column type="selection" width="55"></el-table-column>
-          <el-table-column label="回答IP" >
+          <el-table-column label="IP address" >
             <template slot-scope="scope">
               <el-popover trigger="hover" placement="top">
                 <p v-html="scope.row.ipAddr" ></p>
@@ -23,24 +23,24 @@
               </el-popover>
             </template>
           </el-table-column>
-          <el-table-column label="回答的题数" >
+          <el-table-column label="Answer amount" >
             <template slot-scope="scope">
-              <span style="margin-left: 10px">{{ scope.row.completeItemNum!=null ? scope.row.completeItemNum:0 }}&nbsp;题</span>
+              <span style="margin-left: 10px">{{ scope.row.completeItemNum!=null ? scope.row.completeItemNum:0 }}&nbsp;</span>
             </template>
           </el-table-column>
-          <el-table-column label="回答时间" >
+          <el-table-column label="Response Time" >
             <template slot-scope="scope">
               <i class="el-icon-time"></i>
               <span style="margin-left: 10px">{{ scope.row.endAnDate }}</span>
             </template>
           </el-table-column>
-          <el-table-column label="操作" width="160" >
+          <el-table-column label="Operation" width="160" >
             <template slot-scope="scope">
               <el-button-group>
-                <el-tooltip effect="dark" content="查看数据" placement="top">
+                <el-tooltip effect="dark" content="Review Data" placement="top">
                   <el-button size="mini" icon="el-icon-view" @click="handleGo(`/no-top/dw-survey/d/data/${scope.row.surveyId}/${scope.row.id}`)"></el-button>
                 </el-tooltip>
-                <el-tooltip effect="dark" content="删除数据" placement="top">
+                <el-tooltip effect="dark" content="Delete Data" placement="top">
                   <el-button size="mini" icon="el-icon-delete" @click="handleDelete(scope.$index, scope.row)"></el-button>
                 </el-tooltip>
               </el-button-group>
@@ -61,19 +61,19 @@
       </template>
     </dw-survey-dcs-wrapper>
 
-    <el-dialog :visible.sync="dialogFormVisible" append-to-body title="导出答卷数据" width="40%" >
-      <div style="line-height: 30px;">是否同时下载上传题的文件</div>
-      <div style="color: grey;line-height: 30px;font-size: 12px;"><span>如果有上传题，选择压缩下载可能比较占用系统资源及时间，请在空闲时间压缩下载</span></div>
+    <el-dialog :visible.sync="dialogFormVisible" append-to-body title="Export table" width="40%" >
+      <div style="line-height: 30px;">Choose to download upload document as well?</div>
+      <div style="color: grey;line-height: 30px;font-size: 12px;"><span>If there is upload document, please check the size of download zip file</span></div>
       <el-switch
         v-model="expUpQu"
-        active-text="同时压缩上传的文件并下载"
-        inactive-text="仅下载数据Excel"
+        active-text="Suppress file upload"
+        inactive-text="Only download excel files"
         active-value="1"
         inactive-value="0">
       </el-switch>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="executeExportData">确 定</el-button>
+        <el-button @click="dialogFormVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="executeExportData">Confirm</el-button>
       </div>
     </el-dialog>
   </div>
@@ -111,16 +111,16 @@ export default {
     },
     handleDelete (index, row) {
       console.log(index, row)
-      this.$msgbox.confirm('确认删除此条答卷吗？', '删除警告', {type: 'warning', confirmButtonText: '确认删除'}).then(() => {
+      this.$msgbox.confirm('Confirm to delete this survey?', 'Warning', {type: 'warning', confirmButtonText: 'Confirm'}).then(() => {
         const data = {id: [row.id]}
         dwSurveyAnswerDelete(data).then((response) => {
           console.log(response)
           const httpResult = response.data
           if (httpResult.resultCode === 200) {
-            this.$message.success('删除成功，即将刷新数据。')
+            this.$message.success('Successfully deleted')
             this.queryList(1)
           } else {
-            this.$message.error('删除答卷失败')
+            this.$message.error('Fail to delete')
           }
         })
       }).catch(() => {})

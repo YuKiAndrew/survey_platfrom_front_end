@@ -6,18 +6,18 @@
 
 <script>
 
-import DwHeader from '@/components/layouts/DwHeader.vue'
-import DwHeaderLogin from '@/components/layouts/DwHeaderLogin.vue'
-import DwNavMenu from '@/components/layouts/DwNavMenu.vue'
-import DwFooter from '@/components/layouts/DwFooter.vue'
+import Header from '@/components/layouts/DwHeader.vue'
+import HeaderLogin from '@/components/layouts/DwHeaderLogin.vue'
+import NavMenu from '@/components/layouts/DwNavMenu.vue'
+import Footer from '@/components/layouts/DwFooter.vue'
 
 export default {
   name: 'App',
   components: {
-    'dw-nav-menu': DwNavMenu,
-    'dw-header': DwHeader,
-    'dw-header-login': DwHeaderLogin,
-    'dw-footer': DwFooter
+    'dw-nav-menu': NavMenu,
+    'dw-header': Header,
+    'dw-header-login': HeaderLogin,
+    'dw-footer': Footer
   },
   data () {
     return {

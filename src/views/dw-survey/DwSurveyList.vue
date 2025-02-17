@@ -4,28 +4,28 @@
       <el-col :span="20" :offset="2">
         <div class="dw-table-form" style="padding-left: 60px;">
           <el-form :inline="true" :model="formInline" class="dw-form-inline" size="medium" >
-            <el-form-item label="问卷标题">
-              <el-input v-model="formInline.surveyName" placeholder="请输入查询的问卷标题" clearable></el-input>
+            <el-form-item label="Survey Title">
+              <el-input v-model="formInline.surveyName" placeholder="Please type in the survey title" clearable></el-input>
             </el-form-item>
-            <el-form-item label="问卷状态" style="margin-left: 40px;">
-              <el-select v-model="formInline.surveyState" placeholder="请选择问卷状态" clearable>
-                <el-option label="设计中" value="0"></el-option>
-                <el-option label="收集中" value="1"></el-option>
-                <el-option label="收集结束" value="2"></el-option>
+            <el-form-item label="Survey statues" style="margin-left: 40px;">
+              <el-select v-model="formInline.surveyState" placeholder="Please choose survey status" clearable>
+                <el-option label="Design" value="0"></el-option>
+                <el-option label="Collecting" value="1"></el-option>
+                <el-option label="Collect Close" value="2"></el-option>
               </el-select>
             </el-form-item>
             <el-form-item style="margin-left: 40px;">
-              <el-button @click="onSubmit">重置</el-button>
-              <el-button type="primary" @click="onSubmit">查询</el-button>
+              <el-button @click="onSubmit">Reset</el-button>
+              <el-button type="primary" @click="onSubmit">Search</el-button>
             </el-form-item>
           </el-form>
         </div>
         <div class="dw-table">
           <div class="dw-table-title">
             <el-row :span="24" type="flex" justify="space-between" align="middle">
-              <el-col :span="4"><h3>我的问卷</h3></el-col>
+              <el-col :span="4"><h3>My Survey</h3></el-col>
               <el-col :span="20" style="text-align: right;">
-                <el-button type="primary" size="medium" @click="form.id=null;form.name=null;dialogTitle = '创建问卷';dialogFormVisible = true" >新建问卷</el-button>
+                <el-button type="primary" size="medium" @click="form.id=null;form.name=null;dialogTitle = '创建问卷';dialogFormVisible = true" >New Survey</el-button>
               </el-col>
             </el-row>
           </div>
@@ -34,7 +34,7 @@
             stripe
             style="width: 100%">
             <el-table-column type="selection" width="55"></el-table-column>
-            <el-table-column label="问卷" >
+            <el-table-column label="Survey" >
               <template slot-scope="scope">
                 <el-popover trigger="hover" placement="top">
                   <p v-html="scope.row.surveyName" ></p>
@@ -45,44 +45,44 @@
                 </el-popover>
               </template>
             </el-table-column>
-            <el-table-column label="答卷数" width="80" >
+            <el-table-column label="Surveys Amount" width="80" >
               <template slot-scope="scope">
                 <span style="margin-left: 10px">{{ scope.row.answerNum!=null ? scope.row.answerNum:0 }}&nbsp;份</span>
               </template>
             </el-table-column>
-            <el-table-column label="状态" width="80" >
+            <el-table-column label="Status" width="80" >
               <template slot-scope="scope">
-                <el-tag v-if="scope.row.surveyState === 0" >设计中</el-tag>
-                <el-tag v-else-if="scope.row.surveyState === 1" type="success" >收集中</el-tag>
-                <el-tag v-else-if="scope.row.surveyState === 2" type="info" >收集结束</el-tag>
-                <el-tag v-else disable-transitions style="margin-left: 10px" >未知</el-tag>
+                <el-tag v-if="scope.row.surveyState === 0" >Designing</el-tag>
+                <el-tag v-else-if="scope.row.surveyState === 1" type="success" >Collection</el-tag>
+                <el-tag v-else-if="scope.row.surveyState === 2" type="info" >End of Collection</el-tag>
+                <el-tag v-else disable-transitions style="margin-left: 10px" >Other Phase</el-tag>
               </template>
             </el-table-column>
-            <el-table-column label="创建时间" width="180" >
+            <el-table-column label="Create Time" width="180" >
               <template slot-scope="scope">
                 <i class="el-icon-time"></i>
                 <span style="margin-left: 10px">{{ scope.row.createDate }}</span>
               </template>
             </el-table-column>
-            <el-table-column label="操作" width="280">
+            <el-table-column label="Edit" width="280">
               <template slot-scope="scope">
                 <el-button-group>
-                  <el-tooltip effect="dark" content="编辑问卷" placement="top">
-                    <el-button size="mini" content="编辑问卷" icon="el-icon-edit" @click="buttonClickA(`/static/diaowen/design.html?surveyId=${scope.row.id}`)" ></el-button>
+                  <el-tooltip effect="dark" content="Edit Survey" placement="top">
+                    <el-button size="mini" content="Edit" icon="el-icon-edit" @click="buttonClickA(`/static/diaowen/design.html?surveyId=${scope.row.id}`)" ></el-button>
                   </el-tooltip>
-                  <el-tooltip effect="dark" content="答卷地址" placement="top">
+                  <el-tooltip effect="dark" content="Survey Address" placement="top">
                     <el-button size="mini" icon="el-icon-share" @click="handlePush(`/dw/survey/c/url/${scope.row.id}`)"></el-button>
                   </el-tooltip>
-                  <el-tooltip effect="dark" content="答卷数据" placement="top">
+                  <el-tooltip effect="dark" content="Survey Statistics" placement="top">
                     <el-button size="mini" icon="el-icon-s-data" @click="handlePush(`/dw/survey/d/chart/${scope.row.id}`)"></el-button>
                   </el-tooltip>
-                  <el-tooltip effect="dark" content="预览问卷" placement="top">
+                  <el-tooltip effect="dark" content="Preview Survey" placement="top">
                     <el-button size="mini" icon="el-icon-view" @click="buttonClickA(`/static/diaowen/preview.html?surveyId=${scope.row.id}`)"></el-button>
                   </el-tooltip>
-                  <el-tooltip effect="dark" content="复制问卷" placement="top">
+                  <el-tooltip effect="dark" content="Copy Survey" placement="top">
                     <el-button size="mini" icon="el-icon-copy-document" @click="handleCopy(scope.$index, scope.row)"></el-button>
                   </el-tooltip>
-                  <el-tooltip effect="dark" content="删除问卷" placement="top">
+                  <el-tooltip effect="dark" content="Delete Survey" placement="top">
                     <el-button size="mini" icon="el-icon-delete" @click="handleDelete(scope.$index, scope.row)"></el-button>
                   </el-tooltip>
                 </el-button-group>
@@ -107,13 +107,13 @@
     <div>
       <el-dialog :title="dialogTitle" :visible.sync="dialogFormVisible" append-to-body width="40%" >
         <el-form :model="form" label-position="top">
-          <el-form-item :label-width="formLabelWidth" label="问卷标题" >
-            <el-input v-model="form.name" autocomplete="off" placeholder="请输入问卷标题" ></el-input>
+          <el-form-item :label-width="formLabelWidth" label="Survey Title" >
+            <el-input v-model="form.name" autocomplete="off" placeholder="Please input survey title" ></el-input>
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
-          <el-button @click="dialogFormVisible = false">取 消</el-button>
-          <el-button type="primary" @click="handleDialogConfirm">确 定</el-button>
+          <el-button @click="dialogFormVisible = false">Cancel</el-button>
+          <el-button type="primary" @click="handleDialogConfirm">Confirm</el-button>
         </div>
       </el-dialog>
     </div>
@@ -134,7 +134,7 @@ export default {
       pageSize: 10,
       currentPage: 1,
       total: 0,
-      dialogTitle: '创建问卷',
+      dialogTitle: 'Create New Survey',
       formInline: {
         surveyName: null,
         surveyState: null
@@ -163,22 +163,22 @@ export default {
       if (row.surveyNameText !== undefined && row.surveyNameText !== null) {
         this.form.name = `${row.surveyNameText}`
       } else {
-        this.form.name = `复制问卷标题`
+        this.form.name = `Copy Survey Title`
       }
       this.dialogFormVisible = true
-      this.dialogTitle = '复制问卷'
+      this.dialogTitle = 'Copy Survey'
     },
     handleDelete (index, row) {
-      this.$msgbox.confirm('确认删除此问卷吗？', '删除警告', {type: 'warning', confirmButtonText: '确认删除'}).then(() => {
+      this.$msgbox.confirm('Confirm to Delete This Survey?', 'Delete Warning', {type: 'warning', confirmButtonText: 'Delete Confirm'}).then(() => {
         const data = {id: [row.id]}
         dwSurveyDelete(data).then((response) => {
           console.log(response)
           const httpResult = response.data
           if (httpResult.resultCode === 200) {
-            this.$message.success('删除成功，即将刷新数据。')
+            this.$message.success('Delete surccessfully')
             this.queryList(1)
           } else {
-            this.$message.error('删除问卷失败')
+            this.$message.error('Fail to Delete')
           }
         })
       }).catch(() => {})
@@ -214,13 +214,13 @@ export default {
         const resultData = httpResult.data
         if (httpResult.resultCode === 200) {
           this.dialogFormVisible = false
-          this.$confirm('问卷创建成功，点击“继续编辑问卷”进入问卷编辑。', '系统提示', {confirmButtonText: '继续编辑问卷'}).then(({value}) => {
+          this.$confirm('Survey has been successfully created', 'Message', {confirmButtonText: 'Edit Survey'}).then(({value}) => {
             window.location.href=`/static/diaowen/design.html?surveyId=${resultData.id}`
           }).catch(() => {
             this.queryList(1)
           })
         } else {
-          this.$message.error('创建问卷失败')
+          this.$message.error('Fail to create survey')
         }
       })
     },
@@ -230,13 +230,13 @@ export default {
         const resultData = httpResult.data
         if (httpResult.resultCode === 200) {
           this.dialogFormVisible = false
-          this.$confirm('问卷复制成功，点击“继续编辑问卷”进入问卷编辑。', '系统提示', {confirmButtonText: '继续编辑问卷'}).then(({value}) => {
+          this.$confirm('Survey has been successfully duplicated', 'Message', {confirmButtonText: 'Edit Survey'}).then(({value}) => {
             window.location.href=`/static/diaowen/design.html?surveyId=${resultData.id}`
           }).catch(() => {
             this.queryList(1)
           })
         } else {
-          this.$message.error('问卷复制失败')
+          this.$message.error('Fail to create survey')
         }
       })
     }

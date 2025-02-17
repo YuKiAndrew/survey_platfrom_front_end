@@ -41,12 +41,12 @@
                 </el-popover>
               </template>
             </el-table-column>
-            <el-table-column label="创建时间" width="180" >
+            <el-table-column label="Create Time" width="180" >
               <template slot-scope="scope">
                 <span style="margin-left: 10px">{{ scope.row.createTime }}</span>
               </template>
             </el-table-column>
-            <el-table-column label="状态" width="80" >
+            <el-table-column label="Phase" width="80" >
               <template slot-scope="scope">
                 <el-tag v-if="scope.row.status === 0" type="danger" >不可用</el-tag>
                 <el-tag v-else-if="scope.row.status === 1" type="info" >未激活</el-tag>
@@ -54,19 +54,19 @@
                 <el-tag v-else disable-transitions style="margin-left: 10px" >未知</el-tag>
               </template>
             </el-table-column>
-            <el-table-column label="登录时间" width="180" >
+            <el-table-column label="Login time" width="180" >
               <template slot-scope="scope">
                 <i class="el-icon-time"></i>
                 <span style="margin-left: 10px">{{ scope.row.lastLoginTime }}</span>
               </template>
             </el-table-column>
-            <el-table-column label="操作" width="160" align="center">
+            <el-table-column label="Operation" width="160" align="center">
               <template slot-scope="scope">
                 <el-button-group>
-                  <el-tooltip effect="dark" content="编辑问卷" placement="top">
-                    <el-button size="mini" content="编辑" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)"></el-button>
+                  <el-tooltip effect="dark" content="Edit Survey" placement="top">
+                    <el-button size="mini" content="Edit" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)"></el-button>
                   </el-tooltip>
-                  <el-tooltip effect="dark" content="删除问卷" placement="top">
+                  <el-tooltip effect="dark" content="Delete Survey" placement="top">
                     <el-button size="mini" icon="el-icon-delete" @click="handleDelete(scope.$index, scope.row)" ></el-button>
                   </el-tooltip>
                 </el-button-group>
@@ -90,23 +90,23 @@
     <div>
       <el-dialog :title="dialogTitle" :visible.sync="dialogFormVisible" append-to-body width="40%" >
         <el-form ref="userForm" :model="userForm" :rules="userFormRules" status-icon label-position="top">
-          <el-form-item :label-width="formLabelWidth" label="设置账号" prop="loginName" style="margin-top: 0px;">
-            <el-input v-model="userForm.loginName" autocomplete="off" placeholder="请设置登录账号" show-word-limit ></el-input>
+          <el-form-item :label-width="formLabelWidth" label="Sign Up Account" prop="loginName" style="margin-top: 0px;">
+            <el-input v-model="userForm.loginName" autocomplete="off" placeholder="Please Sign Up Account" show-word-limit ></el-input>
           </el-form-item>
-          <el-form-item :label-width="formLabelWidth" label="账号状态" prop="status" class="dw-dialog-form-item">
+          <el-form-item :label-width="formLabelWidth" label="Account Status" prop="status" class="dw-dialog-form-item">
             <el-radio-group v-model="userForm.status">
-              <el-radio :label="0">不可用</el-radio>
-              <el-radio :label="1">未激活</el-radio>
-              <el-radio :label="2">激活</el-radio>
+              <el-radio :label="0">Disable</el-radio>
+              <el-radio :label="1">Inactive</el-radio>
+              <el-radio :label="2">Active</el-radio>
             </el-radio-group>
           </el-form-item>
-          <el-form-item :label-width="formLabelWidth" label="设置密码" prop="pwd" class="dw-dialog-form-item" >
-            <el-input v-model="userForm.pwd" autocomplete="off" placeholder="新建时必须设置密码，修改时不设置代表不修改。" show-password ></el-input>
+          <el-form-item :label-width="formLabelWidth" label="Setup Password" prop="pwd" class="dw-dialog-form-item" >
+            <el-input v-model="userForm.pwd" autocomplete="off" placeholder="Please enter the password" show-password ></el-input>
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
-          <el-button @click="dialogFormVisible = false">取 消</el-button>
-          <el-button type="primary" @click="handleSaveUser()">确 定</el-button>
+          <el-button @click="dialogFormVisible = false">Cancel</el-button>
+          <el-button type="primary" @click="handleSaveUser()">Confirm</el-button>
         </div>
       </el-dialog>
     </div>
@@ -130,7 +130,7 @@ export default {
         loginName: null,
         status: null
       },
-      dialogTitle: '创建用户',
+      dialogTitle: 'Create User',
       dialogFormVisible: false,
       userForm: {
         id: null,
@@ -140,16 +140,16 @@ export default {
       },
       userFormRules: {
         loginName: [
-          {required: true, message: '请输入登录账号', trigger: 'blur'},
-          {min: 6, max: 18, message: '长度在 6 到 18 个字符', trigger: 'blur'}
+          {required: true, message: 'Please Type the login account', trigger: 'blur'},
+          {min: 6, max: 18, message: 'Length between 6 and 18 Characters', trigger: 'blur'}
           // {type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change']}
         ],
         pwd: [
-          {required: true, message: '请输入登录密码', trigger: 'blur'},
-          {min: 6, max: 18, message: '长度在 6 到 18 个字符', trigger: 'blur'}
+          {required: true, message: 'Password', trigger: 'blur'},
+          {min: 6, max: 18, message: 'Length between 6 and 18 Characters', trigger: 'blur'}
         ],
         status: [
-          {required: true, message: '请选择账号状态', trigger: 'change'}
+          {required: true, message: 'Please choose account status', trigger: 'change'}
         ]
       },
       formLabelWidth: '120px'
@@ -173,11 +173,11 @@ export default {
       this.queryList(val)
     },
     openCreateUser () {
-      this.dialogTitle = '创建用户'
+      this.dialogTitle = 'Create User'
       this.dialogFormVisible = true
       this.userFormRules.pwd = [
-        {required: true, message: '请输入登录密码', trigger: 'blur'},
-        {min: 6, max: 18, message: '长度在 6 到 18 个字符', trigger: 'blur'}
+        {required: true, message: 'Password', trigger: 'blur'},
+        {min: 6, max: 18, message: 'Length between 6 and 18 Characters', trigger: 'blur'}
       ]
       this.userForm.id=null
     },
@@ -192,7 +192,7 @@ export default {
       })
     },
     handleEdit (index, row) {
-      this.dialogTitle = `编辑用户`
+      this.dialogTitle = `Edit Account`
       this.dialogFormVisible = true
       this.userFormRules.pwd = {required: false}
       this.userForm.loginName = row.loginName
@@ -202,15 +202,15 @@ export default {
     },
     handleDelete (index, row) {
       console.log(index, row)
-      this.$msgbox.confirm('确认删除此用户吗？', '删除警告', {type: 'warning', confirmButtonText: '确认删除'}).then(() => {
+      this.$msgbox.confirm('Confirm to delete this user？', 'Warning', {type: 'warning', confirmButtonText: 'Delete'}).then(() => {
         const data = {id: [row.id]}
         dwUserDelete(data).then((response) => {
           const httpResult = response.data
           if (httpResult.resultCode === 200) {
-            this.$message.success('删除成功，即将刷新数据。')
+            this.$message.success('Successfully deleted')
             this.queryList(1)
           } else {
-            this.$message.error('添加用户失败')
+            this.$message.error('Failed to add users')
           }
         })
       }).catch(() => {})
@@ -224,11 +224,11 @@ export default {
             dwUserCreate(data).then((response) => {
               const httpResult = response.data
               if (httpResult.resultCode === 200) {
-                this.$message.success('添加成功，即将刷新数据。')
+                this.$message.success('Successfully deleted')
                 this.queryList(1)
                 this.dialogFormVisible = false
               } else {
-                this.$message.error('添加用户失败')
+                this.$message.error('Failed to add users')
               }
             })
           } else {
@@ -236,11 +236,11 @@ export default {
             dwUserUpdate(data).then((response) => {
               const httpResult = response.data
               if (httpResult.resultCode === 200) {
-                this.$message.success('修改成功，即将刷新数据。')
+                this.$message.success('Successfully modified')
                 this.queryList(1)
                 this.dialogFormVisible = false
               } else {
-                this.$message.error('添加用户失败')
+                this.$message.error('Failed to add users')
               }
             })
           }

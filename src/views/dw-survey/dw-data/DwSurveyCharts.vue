@@ -45,21 +45,21 @@ export default {
           let count = questionData.anCount
           let quOptionsObj
           if (questionData.quType === 'CHECKBOX') {
-            questionData.quTypeName = '多选题'
+            questionData.quTypeName = 'Multiple Checkboxes'
             quOptionsObj = questionData.quCheckboxs
           } else if (questionData.quType === 'RADIO') {
-            questionData.quTypeName = '单选题'
+            questionData.quTypeName = 'Multiple Choice'
             quOptionsObj = questionData.quRadios
           } else if (questionData.quType === 'FILLBLANK') {
-            questionData.quTypeName = '填空题'
+            questionData.quTypeName = 'Fill Blank'
           } else if (questionData.quType === 'SCORE') {
-            questionData.quTypeName = '评分题'
+            questionData.quTypeName = 'Score'
             quOptionsObj = questionData.quScores
           } else if (questionData.quType === 'ORDERQU') {
-            questionData.quTypeName = '排序题'
+            questionData.quTypeName = 'Sorting Question'
             quOptionsObj = questionData.quOrderbys
           } else if (questionData.quType === 'MULTIFILLBLANK') {
-            questionData.quTypeName = '多项填空题'
+            questionData.quTypeName = 'Multi-option Fill'
             quOptionsObj = questionData.quMultiFillblanks
           } else {
             questionData.quTypeName = questionData.quType

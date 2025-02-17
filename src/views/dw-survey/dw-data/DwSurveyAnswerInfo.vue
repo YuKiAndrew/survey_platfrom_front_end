@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-page-header content="答卷详情" class="dw-page-header" @back="goBack" ></el-page-header>
+    <el-page-header content="Survey Detail" class="dw-page-header" @back="goBack" ></el-page-header>
     <div class="dw-answer-content">
       <el-row type="flex" class="row-bg">
         <el-col :span="16" :push="4">
@@ -8,32 +8,32 @@
             <el-descriptions :column="3" border>
               <el-descriptions-item>
                 <template slot="label">
-                  <i class="el-icon-location-information"></i> 答卷IP
+                  <i class="el-icon-location-information"></i> Survey IP address
                 </template>
                 {{ survey.surveyAnswer.ipAddr }}
               </el-descriptions-item>
               <el-descriptions-item>
                 <template slot="label">
                   <i class="el-icon-timer"></i>
-                  答卷时间
+                  Response Time
                 </template>
                 {{ survey.surveyAnswer.endAnDate }}
               </el-descriptions-item>
               <el-descriptions-item>
                 <template slot="label">
                   <i class="el-icon-monitor"></i>
-                  答题数
+                  The amount of answers
                 </template>
                 {{ survey.surveyAnswer.completeItemNum }}
               </el-descriptions-item>
               <el-descriptions-item>
                 <template slot="label">
-                  <i class="el-icon-price-tag"></i> 答卷ID
+                  <i class="el-icon-price-tag"></i> Answer ID
                 </template>
                 {{ survey.surveyAnswer.id }}
               </el-descriptions-item>
             </el-descriptions>
-            <div class="dw-answer-title" style="padding-top: 30px;padding-bottom: 0px;">答卷结果信息</div>
+            <div class="dw-answer-title" style="padding-top: 30px;padding-bottom: 0px;">Result</div>
             <div style="padding: 0px 20px 30px 20px;">
               <dw-survey-answer-qu-common v-for="(item,index) in survey.questions" :key="item.id" :id="item.id" :index="index" :question="item" ></dw-survey-answer-qu-common>
             </div>
@@ -78,20 +78,20 @@ export default {
         desc: ''
       },
       options: [{
-        value: '选项1',
-        label: '黄金糕'
+        value: 'Option1',
+        label: 'Rice'
       }, {
-        value: '选项2',
-        label: '双皮奶'
+        value: 'Option2',
+        label: 'Noodles'
       }, {
-        value: '选项3',
-        label: '蚵仔煎'
+        value: 'Option3',
+        label: 'Pancakes'
       }, {
-        value: '选项4',
-        label: '龙须面'
+        value: 'Option4',
+        label: 'Pho'
       }, {
-        value: '选项5',
-        label: '北京烤鸭'
+        value: 'Option5',
+        label: 'Dumplings'
       }],
       value: ''
     }
@@ -118,24 +118,24 @@ export default {
           const quType = questionData.quType
           let quOptionsObj
           if (quType==='CHECKBOX') {
-            questionData.quTypeName = '多选题'
+            questionData.quTypeName = 'Multiple Checkboxes'
             quOptionsObj = questionData.quCheckboxs
           } else if (quType==='RADIO') {
-            questionData.quTypeName = '单选题'
+            questionData.quTypeName = 'Multiple Choice'
             quOptionsObj = questionData.quRadios
           } else if (quType==='FILLBLANK') {
-            questionData.quTypeName = '填空题'
+            questionData.quTypeName = 'Fill Blank'
           } else if (quType==='SCORE') {
-            questionData.quTypeName = '评分题'
+            questionData.quTypeName = 'Score'
             quOptionsObj = questionData.quScores
           } else if (quType==='ORDERQU') {
-            questionData.quTypeName = '排序题'
+            questionData.quTypeName = 'Sorting Question'
             quOptionsObj = questionData.quOrderbys
           } else if (quType==='MULTIFILLBLANK') {
-            questionData.quTypeName = '多项填空题'
+            questionData.quTypeName = 'Multi-option Fill'
             quOptionsObj = questionData.quMultiFillblanks
           } else if (quType==='UPLOADFILE') {
-            questionData.quTypeName = '文件上传题'
+            questionData.quTypeName = 'Upload File'
           } else {
             questionData.quTypeName = quType
           }

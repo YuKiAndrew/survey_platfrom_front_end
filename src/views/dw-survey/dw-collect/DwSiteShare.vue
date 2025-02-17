@@ -4,8 +4,8 @@
       <div slot="dw-dcs-main-slot">
         <div>
           <div class="dw-dcs-main-title">
-            <h4>分享到社交网络</h4>
-            <div class="dw-dcs-main-p">赶快分享您的问卷到各大社交网站，让更多关注您的朋友来回答问卷。</div>
+            <h4>Share on the social platform</h4>
+            <div class="dw-dcs-main-p">Invite users to use this product</div>
           </div>
           <div class="dw-dcs-main-content"></div>
         </div>
@@ -35,7 +35,7 @@ export default {
     copyActiveCode (e, text) {
       const clipboard = new Clipboard(e.target, {text: () => text})
       clipboard.on('success', e => {
-        this.$message({type: 'success', message: '复制成功'})
+        this.$message({type: 'success', message: 'Successfully copied'})
         // 释放内存
         clipboard.off('error')
         clipboard.off('success')
@@ -43,7 +43,7 @@ export default {
       })
       clipboard.on('error', e => {
         // 不支持复制
-        this.$message({type: 'waning', message: '该浏览器不支持自动复制'})
+        this.$message({type: 'waning', message: 'Browser does not support this operation'})
         // 释放内存
         clipboard.off('error')
         clipboard.off('success')

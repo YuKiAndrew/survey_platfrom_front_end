@@ -4,8 +4,8 @@
       <template v-slot:dw-dcs-main-slot >
         <div>
           <div class="dw-dcs-main-title">
-            <h4>问卷属性设置</h4>
-            <div class="dw-dcs-main-p">配置问卷答卷时的收集规则</div>
+            <h4>Survey Properties</h4>
+            <div class="dw-dcs-main-p">Design the collection rules</div>
           </div>
           <div class="dw-dcs-main-content">
 
@@ -13,48 +13,48 @@
               <el-form ref="form" :label-position="labelPosition" :model="form" >
                 <el-row>
                   <el-col :span="12">
-                    <h5>回答限制</h5>
+                    <h5>Response restriction</h5>
                     <div style="padding-left: 10px;">
                       <el-form-item>
-                        <el-checkbox v-model="survey.surveyDetail.effective" >每台电脑或手机只能答一次</el-checkbox>
+                        <el-checkbox v-model="survey.surveyDetail.effective" >Any personal computer or portable device can only answer once</el-checkbox>
                       </el-form-item>
                       <el-form-item>
-                        <el-checkbox v-model="survey.surveyDetail.effectiveIp" >每个IP只能答一次</el-checkbox>
+                        <el-checkbox v-model="survey.surveyDetail.effectiveIp" >Every IP can answer once</el-checkbox>
                       </el-form-item>
                       <el-form-item>
-                        <el-checkbox v-model="survey.surveyDetail.refresh">有重复回答启用验证码</el-checkbox>
+                        <el-checkbox v-model="survey.surveyDetail.refresh">Use captcha</el-checkbox>
                       </el-form-item>
                       <el-form-item>
-                        <el-checkbox v-model="survey.surveyDetail.rule">启用访问密码，设置密码</el-checkbox>
-                        <el-input v-model="survey.surveyDetail.ruleCode" placeholder="请输入内容" style="width: 160px;"></el-input>
+                        <el-checkbox v-model="survey.surveyDetail.rule">Enable access password</el-checkbox>
+                        <el-input v-model="survey.surveyDetail.ruleCode" placeholder="Please enter content" style="width: 160px;"></el-input>
                       </el-form-item>
                     </div>
                   </el-col>
                   <el-col :span="12">
-                    <h5>何时结束</h5>
+                    <h5>Time</h5>
                     <div style="padding-left: 10px;">
                       <el-form-item>
-                        <el-checkbox v-model="survey.surveyDetail.ynEndNum">收集到
+                        <el-checkbox v-model="survey.surveyDetail.ynEndNum">Collect
                           <el-input-number :min="1" :max="100000" v-model="survey.surveyDetail.endNum" label="份数" controls-position="right"></el-input-number>
-                          份时结束</el-checkbox>
+                          then end the collection</el-checkbox>
                       </el-form-item>
                       <el-form-item>
-                        <el-checkbox v-model="survey.surveyDetail.ynEndTime">时间到
+                        <el-checkbox v-model="survey.surveyDetail.ynEndTime">Time
                           <el-date-picker
                             v-model="survey.surveyDetail.endTime"
                             value-format="yyyy-MM-dd HH:mm:ss"
                             type="datetime"
-                            placeholder="选择日期时间" >
+                            placeholder="Please choose date" >
                           </el-date-picker>
-                          时结束
+                          ended
                         </el-checkbox>
                       </el-form-item>
                     </div>
                   </el-col>
                 </el-row>
                 <el-form-item>
-                  <el-button type="primary" @click="onSubmit"> 保存修改 </el-button>
-                  <el-button>取消</el-button>
+                  <el-button type="primary" @click="onSubmit"> Save Modification </el-button>
+                  <el-button>Cancel</el-button>
                 </el-form-item>
               </el-form>
             </div>
@@ -136,7 +136,7 @@ export default {
         console.log(response)
         const data = response.data
         if (data.resultCode === 200) {
-          this.$message({type: 'success', message: '保存成功'})
+          this.$message({type: 'success', message: 'Saved Successfully'})
         } else {
           this.$message({type: 'error', message: data.resultMsg})
         }

@@ -4,25 +4,25 @@
       <el-col :span="10" :offset="7">
         <div class="loginFormContent" >
           <div style="text-align: center;">
-            <h3>欢迎登录</h3>
+            <h3>Welcome Page</h3>
             <div>
-              <el-tag type="success">调问</el-tag>
-              <el-tag type="warning">专业</el-tag>
-              <el-tag>开源</el-tag>
-              <el-tag type="success">实用的</el-tag>
-              <el-tag type="warning">调查问卷系统</el-tag>
+              <el-tag type="success">Questionnaire</el-tag>
+              <el-tag type="warning">Professional</el-tag>
+              <el-tag>Open-Source</el-tag>
+              <el-tag type="success">Practical</el-tag>
+              <el-tag type="warning">Questionnaire System</el-tag>
             </div>
           </div>
           <div>
             <el-form ref="ruleForm" :model="ruleForm" :rules="rules" status-icon label-position="top" label-width="100px" class="demo-ruleForm" @submit.native.prevent >
-              <el-form-item label="用户名" prop="email">
+              <el-form-item label="username" prop="email">
                 <el-input v-model="ruleForm.email" autocomplete="on" ></el-input>
               </el-form-item>
-              <el-form-item label="密码" prop="pass">
+              <el-form-item label="password" prop="pass">
                 <el-input v-model="ruleForm.pass" type="password" autocomplete="off" show-password ></el-input>
               </el-form-item>
               <el-form-item>
-                <el-button type="primary" native-type="submit" style="width: 100%;" @click="submitForm('ruleForm')" >登录</el-button>
+                <el-button type="primary" native-type="submit" style="width: 100%;" @click="submitForm('ruleForm')" >login in</el-button>
               </el-form-item>
             </el-form>
           </div>
@@ -47,12 +47,12 @@ export default {
       },
       rules: {
         email: [
-          {required: true, message: '请输入登录账号', trigger: 'blur'}
+          {required: true, message: 'Email', trigger: 'blur'}
           // {type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change']}
         ],
         pass: [
-          {required: true, message: '请输入登录密码', trigger: 'blur'},
-          {min: 6, max: 18, message: '长度在 6 到 18 个字符', trigger: 'blur'}
+          {required: true, message: 'Password', trigger: 'blur'},
+          {min: 6, max: 18, message: 'The password length should fit in between 6 to 18 characters.', trigger: 'blur'}
         ]
       }
     }
@@ -77,7 +77,7 @@ export default {
               if (resultData.hasOwnProperty('httpResult') && resultData.httpResult!=null && resultData.httpResult.hasOwnProperty('resultMsg')) {
                 msgError(resultData.httpResult.resultMsg)
               } else {
-                msgError('登录失败，请确认！')
+                msgError('Login failed! Please check your username and password!')
               }
             }
           })

@@ -6,7 +6,7 @@
       <span>【{{ question.quTypeName }}】</span>
     </div>
     <div v-if="question.quType === 'FILLBLANK' || question.quType === 'UPLOADFILE'" style="padding: 30px;">
-      填写回答：{{ question.anCount }} 份
+      The amount of answers：{{ question.anCount }}
     </div>
     <div v-if="question.quType !== 'FILLBLANK' && question.quType !== 'UPLOADFILE'">
       <el-table
@@ -14,13 +14,13 @@
         style="width: 100%">
         <el-table-column
           prop="optionName"
-          label="题目选项">
+          label="Options">
           <template slot-scope="scope">
             <span v-html="scope.row.optionName" ></span>
           </template>
         </el-table-column>
         <el-table-column
-          :label="question.quType === 'SCORE' ? '占总分比例' : question.quType === 'ORDERQU' ? '排名比例' : question.quType === 'MULTIFILLBLANK' ? '填写比例' : '频次比例'"
+          :label="question.quType === 'SCORE' ? 'occupy' : question.quType === 'ORDERQU' ? 'Ranking system' : question.quType === 'MULTIFILLBLANK' ? 'Fill Blank Ratio' : 'Frequency Ratio'"
           width="330" >
           <template slot-scope="scope">
             <el-progress :text-inside="true" :stroke-width="26" :percentage="scope.row.percent"></el-progress>
@@ -28,28 +28,28 @@
         </el-table-column>
         <el-table-column
           v-if="question.quType === 'RADIO' || question.quType === 'CHECKBOX' "
-          label="频次"
+          label="Ratio"
           width="130"
           align="center">
           <template slot-scope="scope">{{ scope.row.anCount }} 次</template>
         </el-table-column>
         <el-table-column
           v-if="question.quType === 'SCORE'"
-          label="平均分"
+          label="Average Score"
           width="130"
           align="center">
           <template slot-scope="scope">平均 {{ scope.row.anCount }} 分</template>
         </el-table-column>
         <el-table-column
           v-if="question.quType === 'ORDERQU'"
-          label="排名"
+          label="Rank"
           width="130"
           align="center">
           <template slot-scope="scope">第 {{ scope.row.orderNum }} 名</template>
         </el-table-column>
         <el-table-column
           v-if="question.quType === 'MULTIFILLBLANK'"
-          label="填写次数"
+          label="The amount of surveys"
           width="130"
           align="center">
           <template slot-scope="scope">{{ scope.row.anCount }} 次</template>
@@ -57,16 +57,16 @@
       </el-table>
       <div>
         <el-tabs v-model="activeName" style="width: 100%;" @tab-click="handleClick" >
-          <el-tab-pane label="柱状图" name="bar">
+          <el-tab-pane label="Bar Chart" name="bar">
             <div class="dwsurveyMain" style="width: 100%;height:400px;" ></div>
           </el-tab-pane>
-          <el-tab-pane label="拆线图" name="line">
+          <el-tab-pane label="Line Chart" name="line">
             <div class="dwsurveyMain" style="width: 100%;height:400px;" ></div>
           </el-tab-pane>
-          <el-tab-pane label="拼状图" name="pie">
+          <el-tab-pane label="Pie Chart" name="pie">
             <div class="dwsurveyMain" style="width: 100%;height:400px;" ></div>
           </el-tab-pane>
-          <el-tab-pane label="条形图" name="barY">
+          <el-tab-pane label="Bar Chart" name="barY">
             <div class="dwsurveyMain" style="width: 100%;height:400px;" ></div>
           </el-tab-pane>
         </el-tabs>

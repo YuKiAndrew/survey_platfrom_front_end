@@ -7,11 +7,11 @@
   >
     <el-menu-item index="/dw/user" >
       <i class="el-icon-user"></i>
-      <span slot="title">我的账号</span>
+      <span slot="title">My Account</span>
     </el-menu-item>
     <el-menu-item index="/dw/user/pwd">
       <i class="el-icon-key"></i>
-      <span slot="title">修改密码</span>
+      <span slot="title">Modify Password</span>
     </el-menu-item>
   </el-menu>
 </template>
