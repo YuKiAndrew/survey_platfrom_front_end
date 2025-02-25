@@ -43,12 +43,12 @@
                 <el-col :span="3">
                   <router-link :to="`${prevPath}/survey/c/comp/${survey.id}`" :class="{ 'dw-link-primary' : isSiteComp}" class="dw-link" ><i class="el-icon-edit"></i>问卷设计</router-link>
                 </el-col>
-                <el-col :span="3">
-                  <router-link :to="`${prevPath}/survey/c/weixin/${survey.id}`" :class="{ 'dw-link-primary' : isAnswerWx}" class="dw-link" ><i class="el-icon-brush"></i>样式设计</router-link>
-                </el-col>
-                <el-col :span="3">
-                  <router-link :to="`${prevPath}/survey/c/attr/${survey.id}`" :class="{ 'dw-link-primary' : isSurveySet}" class="dw-link" ><i class="el-icon-setting"></i>答卷设置</router-link>
-                </el-col>
+<!--                <el-col :span="3">-->
+<!--                  <router-link :to="`${prevPath}/survey/c/weixin/${survey.id}`" :class="{ 'dw-link-primary' : isAnswerWx}" class="dw-link" ><i class="el-icon-brush"></i>样式设计</router-link>-->
+<!--                </el-col>-->
+<!--                <el-col :span="3">-->
+<!--                  <router-link :to="`${prevPath}/survey/c/attr/${survey.id}`" :class="{ 'dw-link-primary' : isSurveySet}" class="dw-link" ><i class="el-icon-setting"></i>答卷设置</router-link>-->
+<!--                </el-col>-->
               </el-row>
               <el-row v-show="isAnswerUrl || isSiteShare || isSiteComp || isAnswerWx || isAnswerUrlV6">
                 <el-col :span="3">
@@ -63,9 +63,9 @@
                 <el-col :span="3">
                   <router-link :to="`${prevPath}/survey/c/comp/${survey.id}`" :class="{ 'dw-link-primary' : isSiteComp}" class="dw-link" ><i class="el-icon-discount"></i>网站组件</router-link>
                 </el-col>
-                <el-col :span="3">
-                  <router-link :to="`${prevPath}/survey/c/weixin/${survey.id}`" :class="{ 'dw-link-primary' : isAnswerWx}" class="dw-link" ><i class="el-icon-chat-dot-round"></i>微信收集</router-link>
-                </el-col>
+<!--                <el-col :span="3">-->
+<!--                  <router-link :to="`${prevPath}/survey/c/weixin/${survey.id}`" :class="{ 'dw-link-primary' : isAnswerWx}" class="dw-link" ><i class="el-icon-chat-dot-round"></i>微信收集</router-link>-->
+<!--                </el-col>-->
               </el-row>
               <el-row v-show="isSurveyChart || isAnswerData">
                 <el-col :span="3">

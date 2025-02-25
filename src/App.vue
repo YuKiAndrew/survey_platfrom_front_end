@@ -12,7 +12,9 @@ import NavMenu from '@/components/layouts/DwNavMenu.vue'
 import Footer from '@/components/layouts/DwFooter.vue'
 
 export default {
+  // set the name of component as APP, this is useful for debugging and identifying the components.
   name: 'App',
+  // register the important components.
   components: {
     'dw-nav-menu': NavMenu,
     'dw-header': Header,
@@ -24,11 +26,20 @@ export default {
       currentHeader: 'dw-header'
     }
   },
+  // the lifecycle hook runs after the component is inserted into the DOM
+  breforeCreated () {
+    this.text = 'initial text'; // This line has no effect
+    console.log("beforeCreate: The component is not created yet.");
+  },
   mounted () {
+    console.log("test,test,test")
     this.loginStatus()
   },
   methods: {
+    // A method to check the current route and update the header accordingly.
     loginStatus: function () {
+      // the route variable refers to the current route object provided by Vue Router, it contains the information about the current URL, including the path, parameters, query strings and more.
+
       const fullPath = this.$route.fullPath
       if (fullPath.indexOf('login') >= 0) {
         this.currentHeader = 'dw-header-login'

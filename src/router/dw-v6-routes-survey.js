@@ -6,7 +6,7 @@
 // import DwSiteCompV6 from '../views/dw-survey-v6/dw-collect-v6/DwSiteCompV6.vue'
 // import DwSiteShareV6 from '../views/dw-survey-v6/dw-collect-v6/DwSiteShareV6.vue'
 
-import DwAnswerWeixin from '../views/dw-survey/dw-collect/DwAnswerWeixin'
+// import DwAnswerWeixin from '../views/dw-survey/dw-collect/DwAnswerWeixin'
 import DwSurveyAnswerDataListV6 from '../views/dw-survey-v6/dw-data-v6/DwSurveyAnswerDataListV6.vue'
 import DwAnswerUrlV6 from '../views/dw-survey-v6/dw-collect-v6/DwAnswerUrlV6'
 import DwSurveyChartsV6 from '../views/dw-survey-v6/dw-data-v6/DwSurveyChartsV6.vue'
@@ -48,10 +48,10 @@ const routesSurveyChildren = [
     path: 'survey/c/share/:dwSurveyId',
     component: DwSiteShareV6
   },
-  {
-    path: 'survey/c/weixin/:dwSurveyId',
-    component: DwAnswerWeixin
-  },
+  // {
+  //   path: 'survey/c/weixin/:dwSurveyId',
+  //   component: DwAnswerWeixin
+  // },
   {
     path: 'survey/d/chart/:dwSurveyId',
     meta: {

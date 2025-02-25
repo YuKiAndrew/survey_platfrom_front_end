@@ -3,7 +3,7 @@ export default {
   loginIn: `/api/dwsurvey/anon/security-token/login.do`,
   loginInPwd: `/api/dwsurvey/anon/security/login-pwd.do`,
   loginWxQrCode: `/api/dwsurvey/anon/security/wx-login-qrcode.do`,
-  loginWxStatus: `/api/dwsurvey/anon/security/login-weixin.do`,
+  // loginWxStatus: `/api/dwsurvey/anon/security/login-weixin.do`,
   loginSendSms: `/api/dwsurvey/anon/security/send-smscode.do`,
   register: `/api/dwsurvey/anon/security//register.do`,
 

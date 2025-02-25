@@ -6,7 +6,6 @@ import DwSurveyAttr from '@/views/dw-survey/dw-collect/DwSurveyAttr'
 import DwAnswerUrl from '@/views/dw-survey/dw-collect/DwAnswerUrl'
 import DwSiteComp from '@/views/dw-survey/dw-collect/DwSiteComp'
 import DwSiteShare from '@/views/dw-survey/dw-collect/DwSiteShare'
-import DwAnswerWeixin from '@/views/dw-survey/dw-collect/DwAnswerWeixin'
 import DwSurveyCharts from '@/views/dw-survey/dw-data/DwSurveyCharts'
 import DwSurveyAnswer from '@/views/dw-survey/dw-data/DwSurveyAnswer'
 import DwSurveyAnswerInfo from '@/views/dw-survey/dw-data/DwSurveyAnswerInfo'
@@ -50,11 +49,6 @@ const v5Routes = [
         path: '/dw/survey/c/share/:id',
         name: 'DwSiteShare',
         component: DwSiteShare
-      },
-      {
-        path: '/dw/survey/c/weixin/:id',
-        name: 'DwAnswerWeixin',
-        component: DwAnswerWeixin
       },
       {
         path: '/dw/survey/d/chart/:id',

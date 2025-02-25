@@ -120,20 +120,20 @@ export default {
             this.$router.push('/')
           }
         } else {
-          if (type !== 'weixin') {
-            if (resultData.hasOwnProperty('httpResult') && resultData.httpResult!=null && resultData.httpResult.hasOwnProperty('resultMsg')) {
-              const resultMsg = resultData.httpResult.resultMsg
-              if (resultMsg === 'ExcessiveAttemptsException') {
-                msgError('密码错误超过限定次数，请联系管理员')
-              } else if (resultMsg === 'IncorrectCredentialsException' || resultMsg === 'AuthenticationException' || resultMsg==='') {
-                msgError('用户名或密码错误或被禁用，请确认')
-              } else {
-                msgError(resultMsg)
-              }
-            } else {
-              msgError('登录失败，请确认！')
-            }
-          }
+          // if (type !== 'weixin') {
+          //   if (resultData.hasOwnProperty('httpResult') && resultData.httpResult!=null && resultData.httpResult.hasOwnProperty('resultMsg')) {
+          //     const resultMsg = resultData.httpResult.resultMsg
+          //     if (resultMsg === 'ExcessiveAttemptsException') {
+          //       msgError('密码错误超过限定次数，请联系管理员')
+          //     } else if (resultMsg === 'IncorrectCredentialsException' || resultMsg === 'AuthenticationException' || resultMsg==='') {
+          //       msgError('用户名或密码错误或被禁用，请确认')
+          //     } else {
+          //       msgError(resultMsg)
+          //     }
+          //   } else {
+          //     msgError('登录失败，请确认！')
+          //   }
+          // }
         }
       })
     }
